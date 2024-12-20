@@ -1,20 +1,15 @@
 function [E,R] = LungaDivisione(numeratore , denominatore , passi)
-% DivisionePolinomi: Questa funzione esegue la divisione tra polinomi, per
-% sviluppare il controllo GMV, FDT è una funzione di trasferimento in z^-1
-% mentre passi è un intero. L'ipotesi che si fanno sono che C(z) / A(z)
-% siano in forma canonica ovvero: coprimi, radici dentro il cerchio
-% unitario, monici e stesso grado. ritorna due array indicanti i
-% coefficenti dei polinomi
+% LungaDivisione: Questa funzione esegue la divisione tra polinomi, per
+% sviluppare il controllo GMV, numeratore e denominatore sono array mentre
+% passi è un intero. L'ipotesi che si fanno sono che C(z) / A(z) siano in
+% forma canonica ovvero: coprimi, radici dentro il cerchio unitario, monici
+% e stesso grado. ritorna due array: E quoziente e R resto.
 
 %Aumento la lungezza di denominatore con tanti zeri quanti passi dobbiamo
 %fare
 denominatore = [denominatore , zeros(1 , passi)];
-
-% li porto allo stessa lunghezza
-% es C = [1 2 3] e A = [1 2] ==> C = [1 2 3] A = [1 2 0]
+% li porto allo stessa lunghezza aggiungendo zeri
 [numeratore , denominatore] = StessaLunghezza(numeratore , denominatore);
-
-
 
 E = [];
 R = numeratore;
